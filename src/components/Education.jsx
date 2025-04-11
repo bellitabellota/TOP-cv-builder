@@ -1,0 +1,78 @@
+import {useState} from 'react'
+
+function Education() {
+  const [ education, setEducation] = useState([{institution: "University of Delaware", field: "Fashion", completionYear: 2020, id: crypto.randomUUID()}]);
+
+  const educationList = education.map((educationalExperience) => { 
+    return <EducationalExperience educationalExperience={educationalExperience} key={educationalExperience.id} updateEducation={setEducation} education={education}/>
+  });
+
+  const addEducationHandler = () =>{
+    const newEducationalExperience = {institution: "", field: "", completionYear: undefined, id: crypto.randomUUID()};
+    const updatedEducation = [...education];
+
+    updatedEducation.push(newEducationalExperience);
+    setEducation(updatedEducation);
+  };
+
+  return(
+    <div className="education-container">
+      <h2>Education</h2><button onClick={addEducationHandler}>+</button>
+      { educationList }
+    </div>
+  )
+}
+
+export default Education;
+
+function EducationalExperience({education, educationalExperience, updateEducation}) {
+  const isEntryNew = (educationalExperience.institution ==="" && educationalExperience.field === "" && educationalExperience.completionYear === undefined) ? true : false;
+  const [ inEditing, setInEditing ] = useState(isEntryNew);
+
+  const updateInput = (e) => {
+    const newEducation = [...education];
+    const educationIndex = education.findIndex(value => value === educationalExperience);
+
+    if(e.target.id === "institution") {
+      educationalExperience.institution = e.target.value;
+    } else if (e.target.id === "field") {
+      educationalExperience.field = e.target.value;
+    } else if (e.target.id === "completion-year") {
+      educationalExperience.completionYear = e.target.value;
+    }
+    
+    newEducation[educationIndex] = educationalExperience;
+
+    updateEducation(newEducation);
+  };
+
+  const institutionElem = inEditing ? <input type="text" value={educationalExperience.institution} id="institution" onChange={updateInput}/> : <p>{educationalExperience.institution}</p>;
+  const fieldElem = inEditing ? <input type="text" value={educationalExperience.field} id="field" onChange={updateInput}/> : <p>{educationalExperience.field}</p>;
+  const completionYearElem = inEditing ? <input type="number" value={educationalExperience.completionYear} id="completion-year" onChange={updateInput}/> : <p>{educationalExperience.completionYear}</p>;
+  const editButtonText = inEditing ? "Save" : "Edit";
+
+  const toggleEdit = () => {
+    inEditing ? setInEditing(false) : setInEditing(true);
+  }
+
+  const handleDeletion = () => {
+    const updatedEducation = education.filter(value => value.id !== educationalExperience.id );
+    updateEducation(updatedEducation);
+  }
+
+  return(
+    <div className="card-educational-experience">
+      <button onClick={toggleEdit}>{editButtonText}</button>
+      <button onClick={handleDeletion}>Delete</button>
+      <div>
+        <p>Institution: </p>  { institutionElem }
+      </div>
+      <div>
+        <p>Field: </p>  { fieldElem }
+      </div>
+      <div>
+        <p>Completion Year: </p>  { completionYearElem }
+      </div>
+    </div>
+  )
+}

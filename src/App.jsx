@@ -1,4 +1,5 @@
 import './App.css'
+import Education from './components/Education'
 import General from './components/General'
 function App() {
   
@@ -8,6 +9,7 @@ function App() {
       <h1>CV Builder</h1>
       <h2>General Information</h2>
       <General />
+      <Education />
     </>
   )
 }
