@@ -15,8 +15,10 @@ function PracticalExperience() {
   };
 
   return(
-    <div className="practical-experience-container">
-      <h2>Practical Experience</h2><button onClick={addPExperienceHandler}>+</button>
+    <div className="practical-experience-container section">
+      <div className="section-header">
+        <h2>Practical Experience</h2><button onClick={addPExperienceHandler}><img src="src/assets/plus.png" alt="plus-icon" /></button>
+      </div>
       { pExperienceList }
     </div>
   )
@@ -65,23 +67,27 @@ function PExperience({pExperiences, pExperience, updatePExperience}) {
   }
   
   return(
-    <div className="card-educational-experience">
-    <button onClick={toggleEdit}>{editButtonText}</button>
-    <button onClick={handleDeletion}>Delete</button>
-    <div>
-      <p>Company: </p>  { companyElem }
+    <div className="card-educational-experience card">
+    <div className="button-container">
+      <button onClick={toggleEdit}>{editButtonText}</button>
+      <button onClick={handleDeletion}>Delete</button>
     </div>
-    <div>
-      <p>Position: </p>  { positionElem }
-    </div>
-    <div>
-      <p>Responsibilities: </p>  { responsibilitiesElem }
-    </div>
-    <div>
-      <p>Start Date: </p>  { startElem }
-    </div>
-    <div>
-      <p>End Date: </p>  { endElem }
+    <div className="field-container">
+      <div>
+        <p>Company: </p>  { companyElem }
+      </div>
+      <div>
+        <p>Position: </p>  { positionElem }
+      </div>
+      <div>
+        <p>Responsibilities: </p>  { responsibilitiesElem }
+      </div>
+      <div>
+        <p>Start Date: </p>  { startElem }
+      </div>
+      <div>
+        <p>End Date: </p>  { endElem }
+      </div>
     </div>
   </div>
   )

@@ -1,5 +1,6 @@
 import {useState} from 'react'
 
+
 function Education() {
   const [ education, setEducation] = useState([{institution: "University of Delaware", field: "Fashion", completionYear: 2020, id: crypto.randomUUID()}]);
 
@@ -16,8 +17,10 @@ function Education() {
   };
 
   return(
-    <div className="education-container">
-      <h2>Education</h2><button onClick={addEducationHandler}>+</button>
+    <div className="education-container section">
+      <div className="section-header">
+        <h2>Education</h2><button onClick={addEducationHandler}><img src="src/assets/plus.png" alt="plus-icon" /></button>
+      </div>
       { educationList }
     </div>
   )
@@ -61,17 +64,21 @@ function EducationalExperience({education, educationalExperience, updateEducatio
   }
 
   return(
-    <div className="card-educational-experience">
-      <button onClick={toggleEdit}>{editButtonText}</button>
-      <button onClick={handleDeletion}>Delete</button>
-      <div>
-        <p>Institution: </p>  { institutionElem }
+    <div className="card-educational-experience card">
+      <div className="button-container">
+        <button onClick={toggleEdit}>{editButtonText}</button>
+        <button onClick={handleDeletion}>Delete</button>
       </div>
-      <div>
-        <p>Field: </p>  { fieldElem }
-      </div>
-      <div>
-        <p>Completion Year: </p>  { completionYearElem }
+      <div className="field-container">
+        <div className="field">
+          <p>Institution: </p>  { institutionElem }
+        </div>
+        <div className="field">
+          <p>Field: </p>  { fieldElem }
+        </div>
+        <div className="field">
+          <p>Completion Year: </p>  { completionYearElem }
+        </div>
       </div>
     </div>
   )

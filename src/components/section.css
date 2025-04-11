@@ -1,0 +1,68 @@
+.section {
+  background-color: rgba(230, 177, 63, 0.527);
+  padding: 0.25rem 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1vw;
+  padding: 0.325rem;
+}
+
+.section-header button img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.card {
+  background-color: rgba(255, 249, 236, 0.678);
+  padding: 0.5rem 0.6rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card input {
+  padding: 0.25rem 0.5rem;
+  height: fit-content;
+  border:none;
+  border-radius: 15px;
+}
+
+.button-container {
+  justify-content: end;
+  align-items: start;
+  display:flex;
+  gap: 0.5vw;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.field-container > div {
+  display: flex;
+  gap: 0.5vw;
+
+  align-items: center;
+}
+
+.field-container > div > p:first-child {
+  font-weight: bold;
+}
