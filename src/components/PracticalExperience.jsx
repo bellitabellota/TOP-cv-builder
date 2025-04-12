@@ -17,7 +17,7 @@ function PracticalExperience() {
   return(
     <div className="practical-experience-container section">
       <div className="section-header">
-        <h2>Practical Experience</h2><button onClick={addPExperienceHandler}><img src="src/assets/plus.png" alt="plus-icon" /></button>
+        <h2>Practical Experience</h2><button onClick={addPExperienceHandler}><img src="plus.png" alt="plus-icon" /></button>
       </div>
       { pExperienceList }
     </div>

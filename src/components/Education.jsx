@@ -19,7 +19,7 @@ function Education() {
   return(
     <div className="education-container section">
       <div className="section-header">
-        <h2>Education</h2><button onClick={addEducationHandler}><img src="src/assets/plus.png" alt="plus-icon" /></button>
+        <h2>Education</h2><button onClick={addEducationHandler}><img src="plus.png" alt="plus-icon" /></button>
       </div>
       { educationList }
     </div>
