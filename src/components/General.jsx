@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function General() {
   const [ person, setPerson ] = useState({
     name: "John Smith",
@@ -10,12 +9,7 @@ function General() {
   const [ inEditing, setInEditing ] = useState(false);
 
   const updateInput = ((e) => {
-    if (e.target.id === "name") {
-      setPerson({...person, name: e.target.value})
-    } else if (e.target.id === "email") {
-      setPerson({...person, email: e.target.value})
-    }
-      
+    setPerson({ ...person, [e.target.id]: e.target.value });      
   })
 
   const nameElem = inEditing ? <input type="text" value={person.name} id="name" onChange={updateInput} /> : <p>{person.name}</p>;

@@ -34,24 +34,17 @@ function EducationalExperience({education, educationalExperience, updateEducatio
 
   const updateInput = (e) => {
     const newEducation = [...education];
-    const educationIndex = education.findIndex(value => value === educationalExperience);
 
-    if(e.target.id === "institution") {
-      educationalExperience.institution = e.target.value;
-    } else if (e.target.id === "field") {
-      educationalExperience.field = e.target.value;
-    } else if (e.target.id === "completion-year") {
-      educationalExperience.completionYear = e.target.value;
-    }
-    
-    newEducation[educationIndex] = educationalExperience;
+    const educationIndex = education.findIndex(value => value === educationalExperience);
+    const newEducationalExperience = {...educationalExperience, [e.target.id]: e.target.value }
+    newEducation[educationIndex] = newEducationalExperience;
 
     updateEducation(newEducation);
   };
 
   const institutionElem = inEditing ? <input type="text" value={educationalExperience.institution} id="institution" onChange={updateInput}/> : <p>{educationalExperience.institution}</p>;
   const fieldElem = inEditing ? <input type="text" value={educationalExperience.field} id="field" onChange={updateInput}/> : <p>{educationalExperience.field}</p>;
-  const completionYearElem = inEditing ? <input type="number" value={educationalExperience.completionYear} id="completion-year" onChange={updateInput}/> : <p>{educationalExperience.completionYear}</p>;
+  const completionYearElem = inEditing ? <input type="number" value={educationalExperience.completionYear} id="completionYear" onChange={updateInput}/> : <p>{educationalExperience.completionYear}</p>;
   const editButtonText = inEditing ? "Save" : "Edit";
 
   const toggleEdit = () => {

@@ -32,29 +32,19 @@ function PExperience({pExperiences, pExperience, updatePExperience}) {
 
   const updateInput = (e) => {
     const newPExperiences = [...pExperiences];
-    const pExperienceIndex = pExperiences.findIndex(value => value === pExperience);
 
-    if(e.target.id === "company") {
-      pExperience.company = e.target.value;
-    } else if(e.target.id === "position") {
-      pExperience.position = e.target.value;
-    } else if(e.target.id === "responsibilities") {
-      pExperience.responsibilities = e.target.value;
-    } else if(e.target.id === "start-date") {
-      pExperience.start = e.target.value;
-    }else if(e.target.id === "end-date") {
-      pExperience.end = e.target.value;
-    }
+    const pExperienceIndex = pExperiences.findIndex(value => value === pExperience);
+    const newPExperience = {...pExperience, [e.target.id]: e.target.value}
+    newPExperiences[pExperienceIndex] = newPExperience;
     
-    newPExperiences[pExperienceIndex] = pExperience;
     updatePExperience(newPExperiences);
   };
 
   const companyElem = inEditing ? <input type="text" value={pExperience.company} id="company" onChange={updateInput}/> : <p>{pExperience.company}</p>;
   const positionElem = inEditing ? <input type="text" value={pExperience.position} id="position" onChange={updateInput}/> : <p>{pExperience.position}</p>;
   const responsibilitiesElem = inEditing ? <input type="text" value={pExperience.responsibilities} id="responsibilities" onChange={updateInput}/> : <p>{pExperience.responsibilities}</p>;
-  const startElem = inEditing ? <input type="date" value={pExperience.start} id="start-date" onChange={updateInput}/> : <p>{pExperience.start}</p>;
-  const endElem = inEditing ? <input type="date" value={pExperience.end} id="end-date" onChange={updateInput}/> : <p>{pExperience.end}</p>;
+  const startElem = inEditing ? <input type="date" value={pExperience.start} id="start" onChange={updateInput}/> : <p>{pExperience.start}</p>;
+  const endElem = inEditing ? <input type="date" value={pExperience.end} id="end" onChange={updateInput}/> : <p>{pExperience.end}</p>;
   const editButtonText = inEditing ? "Save" : "Edit";
 
   const toggleEdit = () => {
